@@ -50,7 +50,7 @@ Human Resource Information System built with Spring Boot and Vaadin with PWA sup
 
 - Responsive design for all screen sizes
 
-- PWA installable on mobile devicesAccess at: http://localhost:8080
+- PWA installable on mobile devicesAccess at: http://hris-jasamedika.onrender.com/
 - Touch-friendly interface
 - Offline support
 - Native app-like experience
