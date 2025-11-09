@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: hris-jasamedika
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: singapore
+    branch: main
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: VAADIN_PRODUCTION_MODE
+        value: true
+      - key: JAVA_OPTS
+        value: "-Xmx512m -Xss512k -XX:CICompilerCount=2"
