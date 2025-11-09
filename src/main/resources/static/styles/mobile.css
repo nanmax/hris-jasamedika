@@ -1,0 +1,853 @@
+/* Mobile-first responsive styles for HRIS WebView APK */
+
+/* CSS Reset and Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* Base styles for all devices */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+}
+
+/* Viewport meta tag support */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* Universal width constraint for mobile */
+* {
+    max-width: 100% !important;
+}
+
+/* Vaadin application base */
+body {
+    background-color: #f8fafc;
+    line-height: 1.6;
+    color: #374151;
+}
+
+/* Prevent zoom on input focus in iOS */
+input, select, textarea {
+    font-size: 16px !important;
+}
+
+/* Mobile Header Hamburger Menu */
+.mobile-header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 8px;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    background: #f9fafb;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 3px;
+    width: 25px;
+    background: #374151;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Enhanced Hamburger Menu Clickability */
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50px !important;
+    height: 50px !important;
+    background: transparent !important;
+    border: 2px solid #374151 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    z-index: 1000 !important;
+    min-width: 50px !important;
+    min-height: 50px !important;
+    padding: 10px !important;
+    user-select: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    touch-action: manipulation !important;
+}
+
+.hamburger-menu:hover {
+    background: #f3f4f6 !important;
+    border-color: #1e3a8a !important;
+    transform: scale(1.05) !important;
+}
+
+.hamburger-menu:active {
+    transform: scale(0.95) !important;
+    background: #e5e7eb !important;
+}
+
+.hamburger-menu span {
+    display: block !important;
+    width: 25px !important;
+    height: 3px !important;
+    background: #374151 !important;
+    margin: 3px 0 !important;
+    transition: all 0.3s ease !important;
+    border-radius: 2px !important;
+    pointer-events: none !important;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px) !important;
+    background: white !important;
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0 !important;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px) !important;
+    background: white !important;
+}
+
+.hamburger-menu.active {
+    background: #1e3a8a !important;
+    border-color: #1e3a8a !important;
+}
+
+/* Mobile Menu Enhanced */
+.mobile-menu {
+    position: fixed;
+    top: 60px;
+    left: -100%;
+    width: 280px;
+    height: calc(100vh - 60px);
+    background: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    left: 0;
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 998;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.mobile-menu-overlay.active {
+    display: block;
+}
+
+.mobile-menu-content {
+    padding: 25px 20px;
+    background: white;
+    min-height: 200px;
+    border-radius: 0 0 15px 15px;
+}
+
+.mobile-user-info {
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 25px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.mobile-user-name {
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 8px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mobile-user-role {
+    color: #6b7280;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.mobile-logout-btn {
+    background: #dc2626 !important;
+    color: white !important;
+    border: none !important;
+    padding: 16px 20px !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    margin-top: 25px !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.mobile-logout-btn:hover {
+    background: #b91c1c !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4) !important;
+}
+
+.mobile-logout-btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3) !important;
+}
+
+/* Hamburger Menu Animation Enhancement */
+.hamburger-menu:active {
+    transform: scale(0.95);
+}
+
+/* Mobile menu title styling */
+.mobile-menu h3 {
+    color: #1e3a8a !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+    padding-bottom: 15px !important;
+    border-bottom: 2px solid #e5e7eb !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+        position: relative;
+    }
+    
+    /* Add text label to hamburger for clarity */
+    .hamburger-menu::after {
+        content: "MENU";
+        position: absolute;
+        bottom: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 8px;
+        color: #6b7280;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    
+    /* Make mobile header more prominent */
+    .mobile-header {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        border-bottom: 3px solid #e5e7eb;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* Highlight hamburger when active */
+    .hamburger-menu.active {
+        background: #1e3a8a !important;
+        border-color: #1e3a8a !important;
+    }
+    
+    .hamburger-menu.active span {
+        background: white !important;
+    }
+    
+    .hamburger-menu.active::after {
+        color: white !important;
+        content: "TUTUP";
+    }
+    
+    /* Hide desktop header on mobile */
+    .desktop-header {
+        display: none !important;
+    }
+    
+    /* Add top padding to body to account for fixed header */
+    body, vaadin-vertical-layout {
+        padding-top: 60px !important;
+    }
+    
+    /* Base container resets */
+    * {
+        box-sizing: border-box !important;
+    }
+    
+    /* Main view containers */
+    vaadin-vertical-layout {
+        padding: 5px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        min-width: unset !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Dashboard main content */
+    .dashboard-main-content {
+        padding: 10px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* ALL divs with large padding - comprehensive fix */
+    div[style*="padding: 40px"],
+    div[style*="padding: 30px"],
+    div[style*="padding: 25px"] {
+        padding: 15px !important;
+        margin: 0 5px !important;
+        width: calc(100% - 10px) !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Welcome section with gradient background */
+    div[style*="background: linear-gradient"] {
+        margin: 5px !important;
+        padding: 20px 15px !important;
+        border-radius: 12px !important;
+        width: calc(100% - 10px) !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+    }
+    
+    /* Stats section grid container */
+    div[style*="display: grid"],
+    div[style*="display: flex"][style*="gap"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin: 5px 0 !important;
+        padding: 0 5px !important;
+    }
+    
+    /* Individual stat cards */
+    div[style*="background: white"][style*="border-radius"][style*="padding"] {
+        padding: 15px !important;
+        margin: 5px !important;
+        width: calc(100% - 10px) !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        min-width: unset !important;
+    }
+    
+    /* Quick actions grid */
+    div[style*="display: flex"][style*="flex-wrap"] {
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin: 5px 0 !important;
+        padding: 0 5px !important;
+    }
+    
+    /* Action buttons/cards */
+    div[style*="background: white"][style*="cursor: pointer"] {
+        width: calc(100% - 10px) !important;
+        margin: 5px !important;
+        padding: 15px !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Typography adjustments for mobile */
+    h1, h2 {
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+        margin: 10px 0 !important;
+    }
+    
+    h3 {
+        font-size: 1.2rem !important;
+        line-height: 1.3 !important;
+        margin: 8px 0 !important;
+    }
+    
+    /* Paragraph text adjustments */
+    p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+        margin: 8px 0 !important;
+    }
+    
+    /* Large value displays in cards */
+    h3[style*="font-size: 2.5rem"] {
+        font-size: 1.8rem !important;
+    }
+    
+    /* Form elements mobile optimization */
+    vaadin-text-field,
+    vaadin-email-field,
+    vaadin-password-field,
+    vaadin-text-area,
+    vaadin-combo-box,
+    vaadin-date-picker {
+        width: 100% !important;
+        margin: 5px 0 !important;
+    }
+    
+    /* Button containers */
+    vaadin-horizontal-layout {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+        align-items: stretch !important;
+    }
+    
+    /* Ensure touch targets are at least 44px */
+    vaadin-button {
+        min-height: 44px !important;
+        min-width: 44px !important;
+        width: 100% !important;
+        margin: 5px 0 !important;
+        padding: 12px 16px !important;
+        font-size: 14px !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Grid and table mobile optimization */
+    vaadin-grid {
+        font-size: 12px !important;
+        overflow-x: auto !important;
+        width: 100% !important;
+        margin: 10px 0 !important;
+    }
+    
+    vaadin-grid-cell-content {
+        padding: 6px 4px !important;
+        white-space: nowrap !important;
+        font-size: 11px !important;
+    }
+    
+    /* Form layouts */
+    vaadin-form-layout {
+        width: 100% !important;
+        padding: 0 5px !important;
+        margin: 0 !important;
+    }
+    
+    /* Login and register forms */
+    div[style*="max-width: 400px"],
+    div[style*="max-width: 500px"] {
+        max-width: 100% !important;
+        width: calc(100% - 20px) !important;
+        margin: 10px !important;
+        padding: 20px 15px !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Card-like containers */
+    div[style*="background: white"][style*="box-shadow"] {
+        margin: 5px !important;
+        padding: 15px !important;
+        width: calc(100% - 10px) !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Navigation and menu items */
+    vaadin-list-box {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    /* Dialog and notification positioning */
+    vaadin-dialog-overlay {
+        padding: 10px !important;
+        margin: 10px !important;
+        width: calc(100% - 20px) !important;
+        height: auto !important;
+        max-height: calc(100vh - 40px) !important;
+    }
+    
+    /* Prevent any horizontal overflow */
+    .v-app, body, html {
+        overflow-x: hidden !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+    
+    /* Fix for any remaining wide elements */
+    * {
+        max-width: 100% !important;
+    }
+    
+    /* Presensi view specific fixes */
+    .presensi-container {
+        padding: 10px 5px !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    
+    /* Master data and report views */
+    .data-container, .report-container {
+        padding: 10px 5px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        overflow-x: auto !important;
+    }
+    
+    /* Icon adjustments for mobile */
+    vaadin-icon {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    /* Avatar and profile images */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* Tablet styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hamburger-menu {
+        display: none;
+    }
+    
+    .mobile-header {
+        display: none;
+    }
+    
+    .mobile-menu,
+    .mobile-menu-overlay {
+        display: none !important;
+    }
+    
+    .desktop-header {
+        display: block !important;
+    }
+    
+    body, vaadin-vertical-layout {
+        padding-top: 0 !important;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 1025px) {
+    .hamburger-menu {
+        display: none;
+    }
+    
+    .mobile-header {
+        display: none;
+    }
+    
+    .mobile-menu,
+    .mobile-menu-overlay {
+        display: none !important;
+    }
+    
+    .desktop-header {
+        display: block !important;
+    }
+    
+    body, vaadin-vertical-layout {
+        padding-top: 0 !important;
+    }
+    
+    vaadin-form-layout {
+        --vaadin-form-layout-column-spacing: 10px !important;
+    }
+}
+
+/* Small mobile devices (phones in portrait) */
+@media (max-width: 480px) {
+    /* Even more aggressive space optimization */
+    .dashboard-main-content,
+    div[style*="padding"] {
+        padding: 8px !important;
+        margin: 2px !important;
+    }
+    
+    /* Smaller text for very small screens */
+    vaadin-grid {
+        font-size: 10px !important;
+    }
+    
+    vaadin-grid-cell-content {
+        padding: 4px 2px !important;
+        font-size: 9px !important;
+    }
+    
+    /* Stack buttons vertically on very small screens */
+    .action-buttons {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    
+    .action-buttons vaadin-button {
+        margin-bottom: 8px !important;
+        width: 100% !important;
+        font-size: 12px !important;
+        padding: 10px !important;
+    }
+    
+    /* Smaller headers for very small screens */
+    h1, h2 {
+        font-size: 1.2rem !important;
+    }
+    
+    h3 {
+        font-size: 1rem !important;
+    }
+    
+    /* Compact form layout */
+    vaadin-form-layout {
+        --vaadin-form-layout-column-spacing: 5px !important;
+    }
+    
+    /* Reduce welcome section padding even more */
+    div[style*="background: linear-gradient"] {
+        padding: 15px 10px !important;
+        margin: 2px !important;
+    }
+    
+    /* Make stats cards more compact */
+    div[style*="background: white"][style*="border-radius"] {
+        padding: 10px !important;
+        margin: 2px !important;
+    }
+    
+    /* Smaller icons for tiny screens */
+    vaadin-icon {
+        width: 16px !important;
+        height: 16px !important;
+    }
+}
+
+/* Landscape orientation optimizations */
+@media (orientation: landscape) and (max-height: 600px) {
+    /* Reduce padding in landscape mode */
+    .main-content {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+    
+    /* Smaller headers in landscape */
+    h1, h2, h3 {
+        margin-top: 5px !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+/* High DPI/Retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    /* Ensure crisp rendering on high DPI screens */
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+    /* Add dark mode styles if APK supports it */
+    /* Currently keeping light theme for consistency */
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* WebView specific optimizations */
+body {
+    /* Prevent text size adjustment in WebView */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    
+    /* Enable smooth scrolling */
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* Fix for WebView viewport issues */
+.v-ui {
+    min-height: 100vh !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+}
+
+/* Notification positioning for mobile */
+vaadin-notification-card {
+    max-width: calc(100vw - 20px) !important;
+    margin: 10px !important;
+}
+
+/* Utility Classes for Mobile Optimization */
+.mobile-full-width {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.mobile-no-padding {
+    padding: 0 !important;
+}
+
+.mobile-small-padding {
+    padding: 10px !important;
+}
+
+.mobile-no-margin {
+    margin: 0 !important;
+}
+
+.mobile-small-margin {
+    margin: 5px !important;
+}
+
+.mobile-hidden {
+    display: none !important;
+}
+
+/* Specific View Optimizations */
+
+/* Login View */
+.login-container {
+    width: 100% !important;
+    max-width: 400px !important;
+    margin: 20px auto !important;
+    padding: 20px !important;
+}
+
+/* Dashboard Stats Grid */
+@media (max-width: 768px) {
+    .stats-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+    
+    .stats-card {
+        width: 100% !important;
+        margin: 5px 0 !important;
+        padding: 15px !important;
+    }
+}
+
+/* Presensi View */
+.presensi-form {
+    width: 100% !important;
+    padding: 15px !important;
+    margin: 0 !important;
+}
+
+/* Master Data Tables */
+.data-table {
+    width: 100% !important;
+    overflow-x: auto !important;
+    font-size: 12px !important;
+}
+
+/* Report Views */
+.report-filters {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    padding: 15px !important;
+}
+
+/* APK-specific optimizations */
+@media screen and (max-width: 768px) {
+    /* WebView scroll behavior */
+    body {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        position: relative;
+    }
+    
+    /* Prevent bounce effect in WebView */
+    html, body {
+        overscroll-behavior: none;
+        -webkit-overscroll-behavior: none;
+    }
+    
+    /* Fix for status bar overlap in APK */
+    .main-view {
+        padding-top: 60px !important;
+        min-height: calc(100vh - 60px) !important;
+    }
+    
+    /* Ensure full height utilization */
+    vaadin-app-layout {
+        height: 100vh !important;
+        width: 100vw !important;
+        max-width: 100% !important;
+    }
+}
