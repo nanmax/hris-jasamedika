@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -28,7 +30,7 @@ import java.util.List;
 @PageTitle("Tambah Pegawai | HRIS PT Jasamedika")
 @Route(value = "pegawai/add", layout = MainLayout.class)
 public class PegawaiFormView extends VerticalLayout {
-    private WebClient client = WebClient.create("http://localhost:8080");
+    private WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     private TextField namaLengkap = new TextField("Nama Lengkap");
     private EmailField email = new EmailField("Email");
     private PasswordField password = new PasswordField("Password");

@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -49,7 +51,7 @@ public class PegawaiManagementView extends VerticalLayout {
     private VerticalLayout formLayout;
     public PegawaiManagementView() {
         this.client = WebClient.builder()
-                .baseUrl("http://localhost:8080")
+                .baseUrl(ApiConfig.getBaseUrl())
                 .defaultHeader("Authorization", "Bearer " + getToken())
                 .defaultHeader("Content-Type", "application/json")
                 .defaultHeader("Accept", "application/json")

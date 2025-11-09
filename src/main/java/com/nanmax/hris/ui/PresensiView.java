@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -39,7 +41,7 @@ public class PresensiView extends VerticalLayout {
     public PresensiView() {
         this.currentUI = UI.getCurrent(); // Store UI reference at construction time
         this.client = WebClient.builder()
-                .baseUrl("http://localhost:8080")
+                .baseUrl(ApiConfig.getBaseUrl())
                 .defaultHeader("Authorization", "Bearer " + getToken())
                 .defaultHeader("Content-Type", "application/json")
                 .defaultHeader("Accept", "application/json")

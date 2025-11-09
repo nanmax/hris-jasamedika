@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.notification.Notification;
@@ -9,7 +11,7 @@ import reactor.core.publisher.Mono;
 @Route("checkin")
 public class CheckinView extends VerticalLayout {
     private Button btnIn = new Button("Check-In");
-    private WebClient client = WebClient.create("http://localhost:8080");
+    private WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     public CheckinView() {
         setSizeFull(); add(new H2("Presensi Masuk"), btnIn);
         btnIn.addClickListener(e -> {

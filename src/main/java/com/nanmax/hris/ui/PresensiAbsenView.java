@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -27,7 +29,7 @@ public class PresensiAbsenView extends VerticalLayout {
     private TextArea keterangan = new TextArea("Keterangan");
     private Button btnAbsen = new Button("Submit", VaadinIcon.CHECK.create());
     private Button btnPresensiHadir = new Button("Presensi Hadir", VaadinIcon.CLOCK.create());
-    private WebClient client = WebClient.create("http://localhost:8080");
+    private WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     public PresensiAbsenView() {
         setSizeFull();
         addClassName("presensi-absen-view");

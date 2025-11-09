@@ -1,4 +1,8 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H2;
@@ -22,7 +26,7 @@ public class AdminPegawaiAddView extends VerticalLayout {
     PasswordField password = new PasswordField("Password");
     PasswordField passwordC = new PasswordField("Konfirmasi Password");
     Button btnAdd = new Button("Tambah Pegawai");
-    WebClient client = WebClient.create("http://localhost:8080");
+    WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     public AdminPegawaiAddView() {
         setSizeFull();
         add(new H2("Tambah Pegawai (Admin/HRD)"));

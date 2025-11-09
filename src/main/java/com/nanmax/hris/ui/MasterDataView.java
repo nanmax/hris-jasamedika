@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.nanmax.hris.entity.MasterData;
 import com.nanmax.hris.ui.components.ResponsiveHeader;
 import com.vaadin.flow.component.UI;
@@ -36,7 +38,7 @@ public class MasterDataView extends VerticalLayout {
                 .withBackButton(true, "dashboard");
         this.currentUI = UI.getCurrent();
         this.webClient = WebClient.builder()
-                .baseUrl("http://localhost:8080")
+                .baseUrl(ApiConfig.getBaseUrl())
                 .build();
         setupLayout();
         createHeaders();

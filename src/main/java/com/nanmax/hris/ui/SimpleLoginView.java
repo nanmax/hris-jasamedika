@@ -1,4 +1,5 @@
 package com.nanmax.hris.ui;
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -21,7 +22,7 @@ public class SimpleLoginView extends VerticalLayout {
     private PasswordField password = new PasswordField("Password");
     private Button btnLogin = new Button("Login");
     private Button btnBack = new Button("← Back to Home");
-    private WebClient client = WebClient.create("http://localhost:8080");
+    private WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     public SimpleLoginView() {
         setSizeFull();
         setAlignItems(Alignment.CENTER);

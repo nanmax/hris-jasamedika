@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -13,7 +15,7 @@ public class PresensiAdminListView extends VerticalLayout {
     private TextField tglAkhir = new TextField("Tgl Akhir (Epoch)");
     private Button btnLoad = new Button("Load Presensi");
     private Grid<PresensiAdmin> grid = new Grid<>(PresensiAdmin.class);
-    private WebClient client = WebClient.create("http://localhost:8080");
+    private WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     public PresensiAdminListView() {
         setSizeFull();
         add(new H2("Presensi - Semua Pegawai"), tglAwal, tglAkhir, btnLoad, grid);

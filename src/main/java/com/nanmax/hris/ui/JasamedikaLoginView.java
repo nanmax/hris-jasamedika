@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -36,7 +38,7 @@ public class JasamedikaLoginView extends VerticalLayout {
     private boolean isLoginMode = true;
     public JasamedikaLoginView() {
         this.client = WebClient.builder()
-                .baseUrl("http://localhost:8080")
+                .baseUrl(ApiConfig.getBaseUrl())
                 .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(2 * 1024 * 1024))
                 .build();
         setupLayout();

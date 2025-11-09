@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.CssImport;
@@ -32,7 +34,7 @@ public class LoginView extends VerticalLayout {
     private Select<String> profile = new Select<>();
     private Button btnLogin = new Button("Login", VaadinIcon.SIGN_IN.create());
     private Button btnRegister = new Button("Register", VaadinIcon.USER_CHECK.create());
-    private WebClient client = WebClient.create("http://localhost:8080");
+    private WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     public LoginView() {
         setSizeFull();
         setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);

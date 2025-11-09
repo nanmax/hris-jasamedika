@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.listbox.ListBox;
 import com.vaadin.flow.component.notification.Notification;
@@ -9,7 +11,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 @Route("combo")
 public class ComboView extends VerticalLayout {
-    private WebClient client = WebClient.create("http://localhost:8080");
+    private WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     public ComboView() {
         setSizeFull();
         add(new H2("Combo Data"));

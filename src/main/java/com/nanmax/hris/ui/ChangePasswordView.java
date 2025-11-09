@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.H2;
@@ -13,7 +15,7 @@ public class ChangePasswordView extends VerticalLayout {
     private PasswordField passwordBaru1 = new PasswordField("Password Baru 1");
     private PasswordField passwordBaru2 = new PasswordField("Password Baru 2");
     private Button btnUbah = new Button("Ubah Password");
-    private WebClient client = WebClient.create("http://localhost:8080");
+    private WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     public ChangePasswordView() {
         setSizeFull();
         add(new H2("Ubah Password"));

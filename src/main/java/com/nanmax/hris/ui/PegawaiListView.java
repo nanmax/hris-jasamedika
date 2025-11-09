@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
@@ -21,7 +23,7 @@ public class PegawaiListView extends VerticalLayout {
     private TextField searchField = new TextField();
     private Button addButton = new Button("Tambah Pegawai", VaadinIcon.PLUS.create());
     private List<Pegawai> allPegawai;
-    private WebClient client = WebClient.create("http://localhost:8080");
+    private WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     public PegawaiListView() {
         setSizeFull();
         addClassName("pegawai-list-view");

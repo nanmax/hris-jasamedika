@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.notification.Notification;
@@ -8,7 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Route("checkout")
 public class CheckoutView extends VerticalLayout {
     private Button btnOut = new Button("Check-Out");
-    private WebClient client = WebClient.create("http://localhost:8080");
+    private WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     public CheckoutView() {
         setSizeFull(); add(new H2("Presensi Keluar"), btnOut);
         btnOut.addClickListener(e -> {

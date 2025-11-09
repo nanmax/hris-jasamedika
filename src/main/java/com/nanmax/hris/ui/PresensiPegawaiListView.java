@@ -1,4 +1,6 @@
 package com.nanmax.hris.ui;
+
+import com.nanmax.hris.config.ApiConfig;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.datepicker.DatePicker;
@@ -23,7 +25,7 @@ public class PresensiPegawaiListView extends VerticalLayout {
     private Button btnLoad = new Button("Tampilkan", VaadinIcon.SEARCH.create());
     private Button btnAbsen = new Button("Absen Sekarang", VaadinIcon.CLOCK.create());
     private Grid<PresensiPegawai> grid = new Grid<>(PresensiPegawai.class, false);
-    private WebClient client = WebClient.create("http://localhost:8080");
+    private WebClient client = WebClient.create(ApiConfig.getBaseUrl());
     public PresensiPegawaiListView() {
         setSizeFull();
         addClassName("presensi-pegawai-view");
